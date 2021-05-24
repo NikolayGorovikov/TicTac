@@ -1,0 +1,170 @@
+html, body{
+    overflow: hidden;
+}
+@font-face {
+    font-family: geoametria-normal;
+    src: url("Geometria.woff") format("woff");
+    font-display: swap;
+}
+body{
+    height: 90vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: calc(50vh - 45vmin);
+    position: relative;
+    overflow: hidden;
+}
+.topLine{
+    width: 2vmin;
+    height: 0;
+    border-radius: 1vmin;
+    background-color: black;
+    position: absolute;
+    left: calc(65vmin/3 - 1vmin);
+    z-index: 3;
+    transition-property: height;
+    transition-duration: 0.7s;
+    transition-delay: 0.2s;
+    /*box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.5);*/
+}
+.bullshit{
+    left: calc((65vmin/3)*2 - 1vmin);
+    transition-duration: 0.8s;
+    transition-delay: 0s;
+}
+.leftLine{
+    width: 0;
+    height: 2vmin;
+    border-radius: 1vmin;
+    background-color: black;
+    position: absolute;
+    top: calc(65vmin/3 - 1vmin);
+    z-index: 3;
+    transition-property: width;
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+    /*box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.5);*/
+}
+.leftLine:last-of-type{
+    top: calc((65vmin/3)*2 - 1vmin);
+    transition-duration: 0.5s;
+    transition-delay: 0.3s;
+}
+#pitch{
+    height: 65vmin;
+    width: 65vmin;
+    margin-top: 5vmin;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    transition-property: transform;
+    transition-duration: 0.5s;
+}
+#message{
+    height: 20vmin;
+    width: 80vmin;
+    display: flex;
+    overflow: hidden;
+}
+.place{
+    width: calc(65vmin/3);
+    position: relative;
+}
+.cross1, .cross2{
+    height: 0;
+    width: 3vmin;
+    border-radius: 1.5vmin;
+    transform: rotate(225deg) translateY(calc(65vmin/6));
+    transition-property: transform ,height, top;
+    transition-duration: 0.3s;
+    position: absolute;
+    left: calc((65vmin/3)/2 - 1.5vmin);
+    top: calc(65vmin/6);
+    background-color: black;
+    /*box-shadow: -2px 0 4px 0 rgba(0,0,0,0.5);*/
+}
+.cross2{
+    transition-delay:0.3s;
+    /*box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);*/
+    transform: rotate(-45deg) translateY(calc(-65vmin/6));
+}
+.smallCircle{
+    width: 3vmin;
+    height: 3vmin;
+    background-color: black;
+    position: absolute;
+    top: 2vmin;
+    left: calc(65vmin/6 - 1.5vmin);
+    transform-origin: 1.5vmin calc(65vmin/6 - 2vmin);
+    border-radius: 50%;
+    /*box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.5);*/
+}
+.bigCircle{
+    width: calc(65vmin/3 - 4vmin);
+    height: calc(65vmin/3 - 4vmin);
+    box-sizing: border-box;
+    border: 3vmin black solid;
+    position: absolute;
+    left: 2vmin;
+    top: 2vmin;
+    border-radius: 50%;
+    /*box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.5), inset 2px 2px 4px 0 rgba(0,0,0,0.5);*/
+}
+#hi, .turn{
+    margin: auto 0 auto;
+    min-width: 80vmin;
+    font-family: geoametria-normal;
+    text-align: center;
+}
+.turn{
+    font-size: 8vmin;
+}
+#about{
+    margin: auto;
+    min-width: 100%;
+    text-align: center;
+    font-size: 7vmin;
+    font-family: geoametria-normal;
+}
+#message > *{
+    transition-property: transform;
+    transition-duration: 0.5s;
+}
+#chose > p{
+    font-size: 6vmin;
+    text-align: center;
+    font-family: geoametria-normal;
+}
+#chose{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 7.5vmin 0 7.5vmin;
+}
+#buttons{
+    height: 15vmin;
+    width: 65vmin;
+    display: flex;
+    justify-content: space-between;
+}
+#buttons > *{
+    width: 25vmin;
+    height: 10vmin;
+    border-radius: 2vmin;
+    border: black solid 1.5vmin;
+    box-sizing: border-box;
+    margin: auto;
+    font-size: 7vmin;
+    font-family: geoametria-normal;
+    text-align: center;
+    transition-property: background-color, color, transform;
+    transition-duration: 0.5s;
+    transition-delay: 0.15s;
+    cursor: pointer;
+    background-color: white;
+}
+#buttons>*:hover{
+    background-color: black;
+    color: white;
+}
