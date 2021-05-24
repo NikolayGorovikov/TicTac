@@ -35,7 +35,7 @@ function circle(elem){
     setTimeout(()=>{
         elem.innerHTML = "";
         elem.insertAdjacentHTML("afterbegin",bigCircle);
-    }, 600);
+    }, 640);
 
 }
 let message = document.getElementById("message"), pitch, pitchBegin;
