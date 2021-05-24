@@ -5,11 +5,14 @@ let littleCircle = '<div class="smallCircle"></div>';
 let bigCircle = '<div class="bigCircle"></div>';
 function cross(elem){
     elem.insertAdjacentHTML("afterbegin", cross1+cross2);
-    setTimeout(()=>{elem.querySelector(".cross1").style.transform = "rotate(225deg) translateY(0)";
-    elem.querySelector(".cross2").style.transform = "rotate(-45deg) translateY(0)";
+    setTimeout(()=>{
+        elem.querySelector(".cross1").style.transform = "rotate(225deg) translateY(0)";
+        elem.querySelector(".cross2").style.transform = "rotate(-45deg) translateY(0)";
         elem.querySelectorAll(".cross1, .cross2").forEach((e)=>{e.style.height = "calc(65vmin/3)"; e.style.top="0";});
     }, 0);
 }
+document.body.style.top = innerHeight/2-(Math.min(innerHeight, innerWidth)/100)*47+"px";
+window.addEventListener("resize", ()=>document.body.style.top = innerHeight/2-(Math.min(innerHeight, innerWidth)/100)*47+"px");
 function addCirclePoint(degrees, elem){
     elem.insertAdjacentHTML("beforeend",littleCircle);
     elem.querySelector(":last-child").style.transform = "rotate("+degrees+"deg)";
@@ -64,19 +67,45 @@ function TicTac(){
     let game = [0,0,0,0,0,0,0,0,0];
     pitch = document.getElementById("pitch");
     pitchBegin = pitch.cloneNode(true);
-    function isWin(board, n){
+    function isWin(board, n, real){
         for (let i = 0; i < 3; i++){
             if (board[i] + board[i+3]+board[i+6] === n){
+                if (real) setTimeout(()=>{
+                    pitch.insertAdjacentHTML("afterbegin", '<div class="crossLineTop"></div>');
+                    pitch.querySelector(".crossLineTop").style.left = 65*Math.min(innerHeight, innerWidth)/100/6+65*Math.min(innerHeight, innerWidth)/100/3*i-1.5*Math.min(innerHeight, innerWidth)/100+"px";
+                    setTimeout(()=>pitch.querySelector(".crossLineTop").style.height = "61vmin", 10);
+                }, 650);
                 return 'Компьютер победил';
             }
             else if(board[i*3]+board[i*3+1]+board[i*3+2] === n){
+                if (real) setTimeout(()=>{
+                    pitch.insertAdjacentHTML("afterbegin", '<div class="crossLineLeft"></div>');
+                    pitch.querySelector(".crossLineLeft").style.top = 5*65*Math.min(innerHeight, innerWidth)/100/6-65*Math.min(innerHeight, innerWidth)/100/3*i-1.5*Math.min(innerHeight, innerWidth)/100+"px";
+                    setTimeout(()=>pitch.querySelector(".crossLineLeft").style.width = "61vmin", 10);
+                }, 650);
                 return 'Компьютер победил';
             }
         }
         if (board[0]+board[4]+board[8] === n){
+            if (real) setTimeout(()=>{
+                pitch.insertAdjacentHTML("afterbegin", '<div class="bigLine1"></div>')
+                setTimeout(()=>{
+                    pitch.querySelector(".bigLine1").style.transform = "rotate(225deg) translateY(0)";
+                    pitch.querySelector(".bigLine1").style.height = "calc(65vmin*1.4142135623 - 4vmin)";
+                    pitch.querySelector(".bigLine1").style.top="calc((65vmin - (65vmin*1.4142135623 - 4vmin)) / 2)";
+                }, 10)
+            }, 650)
             return 'Компьютер победил';
         }
         if (board[2]+board[4]+board[6] === n){
+            if (real) setTimeout(()=>{
+                pitch.insertAdjacentHTML("afterbegin", '<div class="bigLine2"></div>')
+                setTimeout(()=>{
+                    pitch.querySelector(".bigLine2").style.transform = "rotate(135deg) translateY(0)";
+                    pitch.querySelector(".bigLine2").style.height = "calc(65vmin*1.4142135623 - 4vmin)";
+                    pitch.querySelector(".bigLine2").style.top="calc((65vmin - (65vmin*1.4142135623 - 4vmin)) / 2)";
+                }, 10)
+            }, 650)
             return 'Компьютер победил';
         }
         if (board.every(item => item !== 0)){
@@ -226,8 +255,8 @@ function TicTac(){
         }
         game[move] = 1;
         console.log(game);
-        let situation = isWin(game, 3);
         turns.notSign(pitch.querySelector(".place:nth-of-type("+(nums.indexOf(move)+1)+")"));
+        let situation = isWin(game, 3, true);
         if (situation === undefined){
             setTimeout(()=>{
                 console.log(document.querySelector(".turn").style.transform);

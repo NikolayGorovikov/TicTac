@@ -11,7 +11,6 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: calc(50vh - 47.5vmin);
     position: relative;
     overflow: hidden;
 }
@@ -83,6 +82,23 @@ body{
     top: calc(65vmin/6);
     background-color: black;
     /*box-shadow: -2px 0 4px 0 rgba(0,0,0,0.5);*/
+}
+.bigLine1, .bigLine2{
+    width: 3vmin;
+    height: 0;
+    background-color: black;
+    box-shadow: -1vmin 1vmin 0 0 white;
+    position: absolute;
+    z-index: 100;
+    border-radius: 1.5vmin;
+    transition-property: transform ,height, top;
+    top: 32.5vmin;
+    left: calc((65vmin - 3vmin)/2);
+    transition-duration: 0.5s;
+    transform: rotate(225deg) translateY(calc((65vmin*1.4142135623 - 4vmin) / 2));
+}
+.bigLine2{
+    transform: rotate(135deg) translateY(calc((65vmin*1.4142135623 - 4vmin) / 2));
 }
 .cross2{
     transition-delay:0.3s;
@@ -169,4 +185,28 @@ body{
         background-color: black;
         color: white;
     }
+}
+.crossLineLeft{
+    height: 3vmin;
+    width: 0;
+    border-radius: 2vmin;
+    background-color: black;
+    box-shadow: 1vmin 1vmin 0 0 white;
+    position: absolute;
+    left: 2vmin;
+    transition-property: width;
+    transition-duration: 0.5s;
+    z-index: 100;
+}
+.crossLineTop{
+    width: 3vmin;
+    height: 0;
+    border-radius: 2vmin;
+    background-color: black;
+    box-shadow: 1vmin 1vmin 0 0 white;
+    position: absolute;
+    top: 2vmin;
+    transition-property: height;
+    transition-duration: 0.5s;
+    z-index: 100;
 }
