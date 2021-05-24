@@ -63,6 +63,10 @@ window.addEventListener("load", ()=>{
 });
 let choseFirst = document.getElementById("chose").cloneNode(true);
 choseFirst.style.transform = "translateX(-80vmin)";
+choseFirst.querySelectorAll("#buttons > div").forEach((e)=>{
+    e.style.backgroundColor = "white";
+    e.style.color = "black";
+});
 function TicTac(){
     let game = [0,0,0,0,0,0,0,0,0];
     pitch = document.getElementById("pitch");
