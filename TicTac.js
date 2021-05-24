@@ -36,7 +36,7 @@ function circle(elem){
 
 }
 let message = document.getElementById("message"), pitch, pitchBegin;
-window.addEventListener("load", ()=>{
+document.addEventListener("DOMContentLoaded", ()=>{
     setTimeout(()=>{
         setTimeout(()=>{
             pitch.querySelectorAll(".leftLine").forEach((e)=>e.style.width = "65vmin");
