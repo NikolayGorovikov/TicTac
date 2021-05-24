@@ -26,16 +26,16 @@ function toRadians(degrees){
 function circle(elem){
     let i= 29;
     let a = setInterval(()=>{
-        if (i>386) clearInterval(a);
+        if (i>386){
+            clearInterval(a);
+            elem.innerHTML = "";
+            elem.insertAdjacentHTML("afterbegin",bigCircle);
+        }
         else {
             addCirclePoint(i, elem);
         }
         i+=3;
     }, 5);
-    setTimeout(()=>{
-        elem.innerHTML = "";
-        elem.insertAdjacentHTML("afterbegin",bigCircle);
-    }, 640);
 
 }
 let message = document.getElementById("message"), pitch, pitchBegin;
